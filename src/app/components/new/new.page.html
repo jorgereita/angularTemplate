@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nueva Solicitud</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <mat-tab-group [(selectedIndex)]="demo1TabIndex">
+    <mat-tab *ngFor="let item of procesStep">
+      <ng-template class="tab-nav-active" mat-tab-label>
+        <span>{{item.title}} </span>
+      </ng-template>
+      <ng-container *ngIf="item.data">
+        <div *ngIf="item.data.updated_date" class="banner-sup">
+          <span>
+            <ion-icon name="cog"></ion-icon> Id: {{item.id_request}}
+          </span>
+          <span>
+            <ion-icon name="person-circle-outline"></ion-icon> {{"COMMONS.ADVISOR" | translate }}:   {{item.data.updated_by.name}}
+          </span>
+          <span>
+            <ion-icon name="calendar-outline"></ion-icon> {{"COMMONS.DATE" | translate }}: {{item.data.updated_date}}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="item.id===1">
+        <app-initial-form [inputdata]="item.data" (formResult)="resultFormInitial($event)"
+          (waiting)="presentWaitin($event)">
+        </app-initial-form>
+      </ng-container>
+      <ng-container *ngIf="item.id===2">
+        <app-basic-data [requestId]="requestId" [inputdata]="item.data" (cancelEvent)="cancelProcess($event)"
+          (formResult)="resultFormInitial($event)"></app-basic-data>
+      </ng-container>
+      <ng-container *ngIf="item.id===3">
+        <app-financial-data [requestId]="requestId" [inputdata]="item.data" (cancelEvent)="cancelProcess($event)"
+          (formResult)="resultFormInitial($event)"></app-financial-data>
+      </ng-container>
+      <ng-container *ngIf="item.id===4">
+        <app-aditional-data [requestId]="requestId" [inputdata]="item.data" (cancelEvent)="cancelProcess($event)"
+          (formResult)="resultFormInitial($event)"></app-aditional-data>
+      </ng-container>
+      <ng-container *ngIf="item.id===5">
+        <app-final-data [requestId]="requestId" [state]="item.state" [inputdata]="item.data" (cancelEvent)="cancelProcess($event)"
+          (formResult)="resultFormInitial($event)"></app-final-data>
+      </ng-container>
+    </mat-tab>
+  </mat-tab-group>
+</ion-content>

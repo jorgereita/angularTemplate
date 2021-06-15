@@ -1,0 +1,23 @@
+<div class="form-container">
+  <form  [formGroup]="Form" class="has-padding-t-4 form-size">
+    <h2> {{"FORMS.FINANTIAL_DATA_FORM.DESCRIPTION" | translate }} </h2>
+    
+    <div class="input-container">
+      <ion-label position="stacked" class="has-padding-b-1">{{"FORMS.FINANTIAL_DATA_FORM.INCOME" | translate }}</ion-label>
+      <input type="number" formControlName="income" />
+    </div>
+    <br>
+    <div class="grid-buttons" *ngIf="!inputdata.updated_date">
+      <div>
+        <button [attr.disabled]="!Form.valid ? '' : null"
+          [ngClass]="Form.valid?'eluve-button-active':'eluve-button-disable'"
+          (click)="sendForm()">{{"FORMS.BASIC_DATA_FORM.BTN_LABEL" | translate }}
+        </button>
+      </div>
+      <div>
+        <a class="eluve-button-cancel" (click)="cancelProcess()">{{"COMMONS.CANCEL" | translate }}
+        </a>
+      </div>
+    </div>
+  </form>
+</div>

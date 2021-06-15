@@ -1,0 +1,28 @@
+<div class="form-container">
+  <form  [formGroup]="Form" class="has-padding-t-4 form-size">
+    <h2> {{"FORMS.INITIAL_FORM.DESCRIPTION" | translate }} </h2>
+    <div class="input-container">
+      <ion-label position="stacked" class="has-padding-b-1">{{"FORMS.INITIAL_FORM.ID_TYPE" | translate }}</ion-label>
+      <ng-container *ngIf="options.length > 0">
+        <ion-select formControlName="idType"    >
+          <ng-container *ngFor="let item of options">
+            <ion-select-option [value]="item.id" style="border-bottom: 1px solid gray;"> {{item.name}}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ng-container>
+    </div>
+    <br>
+    <div class="input-container">
+      <ion-label position="stacked" class="has-padding-b-1">{{"FORMS.INITIAL_FORM.ID_NUMBER" | translate }}</ion-label>
+      <input id="document" type="number" formControlName="idNumber"   />
+    </div>
+     <div class="grid-buttons">
+       <div>
+        <button *ngIf="!inputdata.updated_date" [attr.disabled]="!Form.valid ? '' : null"
+        [ngClass]="Form.valid?'eluve-button-active':'eluve-button-disable'"
+        (click)="sendForm()">{{"FORMS.INITIAL_FORM.BTN_LABEL" | translate }} </button>
+       </div>
+     </div>
+  </form>
+</div>
+ 

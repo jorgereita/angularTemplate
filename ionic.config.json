@@ -1,0 +1,7 @@
+{
+  "name": "eluvedemo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,39 @@
+<div class="container is-text-center" *ngIf="inputdata">
+  <div class="row">
+    <div class="center is-full">
+      <br>
+      <div class="text-state-title">{{state.name}}</div>
+      <p *ngIf="state.id==='285B19F7-B30B-4363-A3F3-8606AF8C0419'" class="quota"> CUPO: {{inputdata.quota}} </p>
+    </div>
+  </div>
+  <div class="row">
+    <div *ngIf="state.id==='285B19F7-B30B-4363-A3F3-8606AF8C0419'" class="container-cards">
+      <div *ngFor="let item of inputdata.options; index as i" class="inner-card">
+        <div class="title-card">
+          <p>  # {{item.id}}</p>
+        </div>
+        <div class="body-card-ly"  [ngClass]="'body-color-'+i">
+          <div class="info">
+            PLAZO: <span class="dot" [ngClass]="'color-'+i">{{item.term}} </span>  <br>
+            PAGO MENSUAL: {{item.fee}}
+          </div>
+          <div class="footer-card">
+            <div class="action-sticker">
+              <ion-icon name="add"></ion-icon> <p> Tomar </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+  </div>
+  <div class="row ">
+    <div class="center is-full has-margin-t-1">
+      <div>
+        <button class="eluve-button-active" (click)="cancelProcess()">{{"COMMONS.FINISH" | translate }}
+        </button>
+        <br><br>
+      </div>
+    </div>
+  </div>
+</div>

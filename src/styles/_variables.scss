@@ -1,0 +1,361 @@
+///------------------------------
+// COMMONS HELPERS
+///------------------------------
+
+.center {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+.is-flex {
+  display: flex;
+  gap: 0.5rem;
+}
+.is-full {
+  height: 100%;
+  width: 100%;
+}
+.is-flex-center {
+  display: flex;
+  align-items: center;
+}
+.has-padding-b-1 {
+  padding-bottom: 1rem;
+}
+.has-padding-l-1 {
+  padding-left: 1rem;
+}
+.has-w-90 {
+  width: 90%;
+}
+.has-margin-t-1 {
+  margin-top: 1rem;
+}
+.has-w-50 {
+  width: 50%;
+}
+
+.has-padding-t-4 {
+  padding-top: 4rem;
+}
+
+.has-cursor-pointer {
+  cursor: pointer !important;
+}
+.align-center{
+  align-items: center;
+}
+///------------------------------
+// Colors Common class
+///------------------------------
+.eluve-back {
+  background: var(--ion-color-primary);
+}
+.border-primary-strong {
+  border-bottom: 3px solid var(--ion-color-primary);
+}
+.color-white {
+  color: #ffff;
+}
+///------------------------------
+//  Common INPUT
+///------------------------------
+input {
+  outline: 0;
+  background: transparent;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 15px;
+  border-radius: 5px;
+  border: 1px solid var(--ion-color-medium);
+}
+
+input:focus {
+  outline: 0;
+  border: 1px solid var(--ion-color-success);
+}
+
+.input-container {
+  text-align: left;
+}
+
+input[type="date"] {
+  padding: 13px;
+  height: 50px;
+}
+///------------------------------
+//  Common FORMS
+///------------------------------
+.form-container {
+  display: grid;
+  place-items: center;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 570px) {
+  .form-container {
+    form {
+      width: 80%;
+    }
+  }
+}
+
+///------------------------------
+//  Common BUTTONS
+///------------------------------
+.eluve-button-disable {
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  padding: 1em 2em;
+  box-shadow: inset 0 0 0 2px var(--ion-color-medium);
+  color: var(--ion-color-medium);
+  font-size: inherit;
+  font-weight: 700;
+  position: relative;
+  vertical-align: middle;
+  border-radius: 10px;
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+.eluve-button-primary {
+  background: var(--ion-color-primary);
+  border: none;
+  outline: none;
+  // box-sizing: border-box;
+  padding: 1em 2em;
+  box-shadow: inset 0 0 0 2px var(--ion-color-primary);
+  color: white;
+  opacity: 0.7;
+  font-weight: 700;
+  position: relative;
+  vertical-align: middle;
+  border-radius: 10px;
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+.eluve-button-succes {
+  background: var(--ion-color-success);
+  border: none;
+  outline: none;
+  // box-sizing: border-box;
+  padding: 1em 2em;
+  box-shadow: inset 0 0 0 2px var(--ion-color-success);
+  color: white;
+  opacity: 0.7;
+  font-weight: 700;
+  position: relative;
+  vertical-align: middle;
+  border-radius: 10px;
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+.eluve-button-active-contrast {
+  background: none;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  padding: 1em 2em;
+  cursor: pointer;
+  // Using inset box-shadow instead of border for sizing simplicity
+  box-shadow: inset 0 0 0 2px white;
+  color: white;
+  font-size: inherit;
+  font-weight: 700;
+  border-radius: 10px;
+  // Required, since we're setting absolute on pseudo-elements
+  position: relative;
+  vertical-align: middle;
+  transition: color 0.25s;
+  &:focus {
+    border: none;
+    outline: none;
+  }
+  &::before,
+  &::after {
+    box-sizing: inherit;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &::before,
+  &::after {
+    // Set border to invisible, so we don't see a 4px border on a 0x0 element before the transition starts
+    border: 2px solid transparent;
+    border-radius: 10px;
+    width: 0;
+    height: 0;
+  }
+
+  // This covers the top & right borders (expands right, then down)
+  &::before {
+    top: 0;
+    left: 0;
+  }
+
+  // And this the bottom & left borders (expands left, then up)
+  &::after {
+    bottom: 0;
+    right: 0;
+  }
+
+  &:hover {
+    color: var(--ion-color-success);
+  }
+
+  // Hover styles
+  &:hover::before,
+  &:hover::after {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover::before {
+    border-top-color: var(--ion-color-success); // Make borders visible
+    border-right-color: var(--ion-color-success);
+    border-radius: 10px;
+    transition: width 0.25s ease-out,
+      // Width expands first
+      height 0.25s ease-out 0.25s; // And then height
+  }
+
+  &:hover::after {
+    border-bottom-color: var(--ion-color-success); // Make borders visible
+    border-left-color: var(--ion-color-success);
+    border-radius: 10px;
+    transition: border-color 0s ease-out 0.5s,
+      // Wait for ::before to finish before showing border
+      width 0.25s ease-out 0.5s,
+      // And then exanding width
+      height 0.25s ease-out 0.75s; // And finally height
+  }
+}
+
+.eluve-button-active {
+  background: none;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  padding: 1em 2em;
+  cursor: pointer;
+  // Using inset box-shadow instead of border for sizing simplicity
+  box-shadow: inset 0 0 0 2px var(--ion-color-primary);
+  color: var(--ion-color-primary);
+  font-size: inherit;
+  font-weight: 700;
+  border-radius: 10px;
+  // Required, since we're setting absolute on pseudo-elements
+  position: relative;
+  vertical-align: middle;
+  transition: color 0.25s;
+  &:focus {
+    border: none;
+    outline: none;
+  }
+  &::before,
+  &::after {
+    box-sizing: inherit;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &::before,
+  &::after {
+    // Set border to invisible, so we don't see a 4px border on a 0x0 element before the transition starts
+    border: 2px solid transparent;
+    border-radius: 10px;
+    width: 0;
+    height: 0;
+  }
+
+  // This covers the top & right borders (expands right, then down)
+  &::before {
+    top: 0;
+    left: 0;
+  }
+
+  // And this the bottom & left borders (expands left, then up)
+  &::after {
+    bottom: 0;
+    right: 0;
+  }
+
+  &:hover {
+    color: var(--ion-color-success);
+  }
+
+  // Hover styles
+  &:hover::before,
+  &:hover::after {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover::before {
+    border-top-color: var(--ion-color-success); // Make borders visible
+    border-right-color: var(--ion-color-success);
+    border-radius: 10px;
+    transition: width 0.25s ease-out,
+      // Width expands first
+      height 0.25s ease-out 0.25s; // And then height
+  }
+
+  &:hover::after {
+    border-bottom-color: var(--ion-color-success); // Make borders visible
+    border-left-color: var(--ion-color-success);
+    border-radius: 10px;
+    transition: border-color 0s ease-out 0.5s,
+      // Wait for ::before to finish before showing border
+      width 0.25s ease-out 0.5s,
+      // And then exanding width
+      height 0.25s ease-out 0.75s; // And finally height
+  }
+}
+
+.grid-buttons {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 50% 50%;
+  grid-gap: 1rem;
+  // place-items: center;
+  .eluve-button-active {
+    width: 100%;
+  }
+  .eluve-button-cancel {
+    width: 100%;
+  }
+  .eluve-button-disable {
+    width: 100%;
+  }
+  > div {
+    text-align: center;
+    width: 100%;
+    > a {
+      color: var(--ion-color-primary) !important;
+      text-decoration: underline !important;
+      cursor: pointer;
+    }
+  }
+  >div:last-child{
+    padding-top: 1rem;
+  }
+}

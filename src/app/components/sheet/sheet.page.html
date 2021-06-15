@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sabana de datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<section class="filter-content">
+  <div>
+    <ion-select interface="popover" class="is-full" [(ngModel)]="typeFilter">
+      <ion-select-option value="1">{{"FORMS.COMMONS.ID" | translate }}</ion-select-option>
+      <ion-select-option value="2">{{"FORMS.COMMONS.TYPE_ID" | translate }}</ion-select-option>
+      <ion-select-option value="3">{{"FORMS.COMMONS.TYPE_DATE" | translate }}</ion-select-option>
+    </ion-select>
+  </div>
+  <div>
+    <input type="number" *ngIf="typeFilter!=='3'" [attr.placeholder]="value" [(ngModel)]="searchValue" />
+    <div *ngIf="typeFilter=='3'" class="is-flex-res">
+      <div class="is-flex">
+         <span> Inicio:  </span>
+         <input type="date" [(ngModel)]="searchDateStart" />
+        
+      </div>
+      <div class="is-flex">
+         <span> Final: </span> 
+         <input type="date" [(ngModel)]="searchDateEnd" />
+        
+      </div>
+    </div>
+  </div>
+  <button [attr.disabled]="validateDisable() ? '' : null" 
+    [ngClass]="!validateDisable()?'eluve-button-primary':'eluve-button-disable'"
+    (click)="sendFilter()">{{"FORMS.COMMONS.SEARCH" | translate }}</button>
+
+    <button class="eluve-button-succes" *ngIf="filterOn" 
+    (click)="resetData()">{{"FORMS.COMMONS.RESET" | translate }}</button>
+</section>
+
+
+<div class="table-responsive" *ngIf="requests" style="font-size: 10px;" id="scrollcontainer" (scroll)="onScroll()">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">IdSolicitud</th>
+        <th scope="col">Asesor</th>
+        <th scope="col">TipoDocumento</th>
+        <th scope="col">Documento</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">FechaNacimiento</th>
+        <th scope="col">Ingresos</th>
+        <th scope="col">CupoAprobado</th>
+        <th scope="col">Estado</th>
+        <th scope="col">FechaCreacion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of requests">
+        <th scope="row">{{r.idSolicitud}}</th>
+        <td>{{r.asesor}}</td>
+        <td>{{r.tipoIdentificacion}}</td>
+        <td>{{r.identificacion}}</td>
+        <td>{{r.nombre}}</td>
+        <td>{{r.fechaNacimiento}}</td>
+        <td>{{r.ingresos}}</td>
+        <td>{{r.cupoAprobado}}</td>
+        <td>{{r.estado}}</td>
+        <td>{{r.fechaCreacion}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

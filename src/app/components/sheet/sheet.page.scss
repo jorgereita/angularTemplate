@@ -1,0 +1,22 @@
+table {
+  border-collapse: collapse !important;
+  border-spacing: 0;
+}
+.filter-content {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+.is-flex-res{
+  display: flex;
+  gap: 0.5rem;
+}
+@media all and (max-width: 710px) {
+  .filter-content {
+    display: grid;
+  }
+  .is-flex-res{
+    display: contents;
+  }
+}

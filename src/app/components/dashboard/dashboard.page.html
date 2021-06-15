@@ -1,0 +1,66 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay" class="slider-menu">
+      <div class="full-panel eluve-back">
+        <ion-list id="inbox-list" class="eluve-back">
+          <ion-list-header> <div class="color-white">  {{"LOGIN.ELUVE_TEXT" | translate }}</div> </ion-list-header> <br>
+          <ion-note> <div class="color-white">{{"MAIN.GREETING" | translate }} {{user_name}}</div>  </ion-note>
+          <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="eluve-back">
+            <mat-tree-node *matTreeNodeDef="let node" class="mat-tree eluve-back hover-item-menu" [ngClass]="classSelected(node)" (click)="simClick(node.name)">
+              <button (click)="routeMain(node)" class="has-cursor-pointer button-toggle-tree font-button" [attr.id]="node.name">
+                <div *ngIf="node.level == 1 " class="lv2Class is-flex-center has-cursor-pointer"
+                  routerLinkActive="selected">
+                  <ion-icon [name]="node.icon" [attr.color]="active_route == node.url ? 'success' : 'light' "
+                    class="icon-tree"> </ion-icon>
+                 <div class="color-white">
+                  {{node.name}}
+                 </div> 
+                   
+                </div>
+                <div *ngIf="node.level == 0" class="is-flex-center has-cursor-pointer">
+                  <ion-icon [name]="node.icon" [attr.color]="active_route == node.url ? 'success' : 'light' "
+                    class="icon-tree"> </ion-icon>
+                    <div class="color-white">
+                      {{node.name}}
+                     </div> 
+                  
+                </div>
+              </button>
+            </mat-tree-node>
+
+            <mat-tree-node *matTreeNodeDef="let node;when: hasChild" class="mat-tree eluve-back hover-item-menu" (click)="simClick(node.name)">
+              <button class=" button-toggle-tree font-button has-cursor-pointer eluve-back">
+                <div class="is-flex-center has-cursor-pointer eluve-back hover-item-menu">
+                  <ion-icon [name]="node.icon" class="icon-tree" color="light"></ion-icon>
+                  <div class="color-white">
+                    {{node.name}}
+                   </div> 
+                  <button slot="end" matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name" [attr.id]="node.name"
+                    class="button-toggle-tree">
+                    <ng-container *ngIf="treeControl.isExpanded(node)">
+                      <ion-icon name="chevron-up-outline" class="icon-tree-button" color="success"></ion-icon>
+                    </ng-container>
+                    <ng-container *ngIf="!treeControl.isExpanded(node)">
+                      <ion-icon name="chevron-down-outline" class="icon-tree-button" color="light"></ion-icon>
+                    </ng-container>
+                  </button>
+                </div>
+              </button>
+            </mat-tree-node>
+          </mat-tree>
+        </ion-list>
+
+        <ion-list id="labels-list" class="eluve-back center">
+          <button *ngFor="let label of labels " class="eluve-button-active-contrast is-flex-center " (click)="logOut()">
+            <ion-icon name="arrow-back"></ion-icon>
+            <ion-label>{{ label }}</ion-label>
+          </button>
+        </ion-list>
+      </div>
+
+
+
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

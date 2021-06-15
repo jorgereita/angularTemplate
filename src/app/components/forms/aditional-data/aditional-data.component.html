@@ -1,0 +1,43 @@
+<div class="form-container">
+
+
+  <form  [formGroup]="Form" class="has-padding-t-4 form-size">
+    <h2> {{"FORMS.ADITIONAL_DATA_FORM.DESCRIPTION" | translate }} </h2>
+ 
+    <div class="input-container">
+      <ion-label position="stacked" class="has-padding-b-1">{{"FORMS.ADITIONAL_DATA_FORM.TYPE_ID_1" | translate }}</ion-label>
+      <ng-container *ngIf="options.length > 0">
+        <ion-select formControlName="idTypeRef" >
+          <ng-container *ngFor="let item of options">
+            <ion-select-option [value]="item.id"> {{item.name}}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ng-container>
+    </div>
+    <br>
+    <div class="input-container">
+      <ion-label position="stacked" class="has-padding-b-1">{{"FORMS.ADITIONAL_DATA_FORM.REF_ID_1" | translate }}</ion-label>
+      <input type="number" formControlName="idRef" />
+    </div>
+ 
+    <div class="input-container">
+      <ion-label position="stacked" class="has-padding-b-1">{{"FORMS.ADITIONAL_DATA_FORM.REF_NAME_1" | translate }}</ion-label>
+      <input type="text" formControlName="nameRef" />
+    </div>
+    <br>
+    <div class="grid-buttons" *ngIf="!inputdata.updated_date">
+      <div>
+        <button [attr.disabled]="!Form.valid ? '' : null"
+          [ngClass]="Form.valid?'eluve-button-active':'eluve-button-disable'"
+          (click)="sendForm()">{{"FORMS.BASIC_DATA_FORM.BTN_LABEL" | translate }}
+        </button>
+      </div>
+      <div>
+        <a class="eluve-button-cancel" (click)="cancelProcess()">{{"COMMONS.CANCEL" | translate }}
+        </a>
+      </div>
+    </div>
+  </form>
+
+ 
+</div>

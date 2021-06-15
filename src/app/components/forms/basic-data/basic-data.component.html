@@ -1,0 +1,51 @@
+<div class="form-container">
+
+
+  <form  [formGroup]="Form" class="has-padding-t-4 form-size">
+    <h2> {{"FORMS.BASIC_DATA_FORM.DESCRIPTION" | translate }} </h2>
+
+    <div class="input-container">
+      <ion-label position="stacked" class="has-padding-b-1">{{"FORMS.BASIC_DATA_FORM.NAME" | translate }}</ion-label>
+      <input type="text" formControlName="firstName" />
+    </div>
+    <br>
+    <div class="input-container">
+      <ion-label position="stacked" class="has-padding-b-1">{{"FORMS.BASIC_DATA_FORM.SECOND_NAME" | translate }}
+      </ion-label>
+      <input type="text" formControlName="secondName" />
+    </div>
+    <br>
+    <div class="input-container">
+      <ion-label position="stacked" class="has-padding-b-1">{{"FORMS.BASIC_DATA_FORM.SURENAME" | translate }}
+      </ion-label>
+      <input type="text" formControlName="surName" />
+    </div>
+    <br>
+    <div class="input-container">
+      <ion-label position="stacked" class="has-padding-b-1">{{"FORMS.BASIC_DATA_FORM.SECOND_SURE_NAME" | translate }}
+      </ion-label>
+      <input type="text" formControlName="secondSurName" />
+    </div>
+    <br>
+    <div class="input-container">
+      <ion-label position="stacked" class="has-padding-b-1">{{"FORMS.BASIC_DATA_FORM.BIRTHDATE" | translate }}
+      </ion-label>
+      <input type="date" formControlName="birthDate" />
+    </div>
+    <br>
+
+    <div class="grid-buttons" *ngIf="!inputdata.updated_date">
+      <div>
+        <button [attr.disabled]="!Form.valid ? '' : null"
+          [ngClass]="Form.valid?'eluve-button-active':'eluve-button-disable'"
+          (click)="sendForm()">{{"FORMS.BASIC_DATA_FORM.BTN_LABEL" | translate }}
+        </button>
+      </div>
+      <div>
+        <a class="eluve-button-cancel" (click)="cancelProcess()">{{"COMMONS.CANCEL" | translate }}
+        </a>
+      </div>
+    </div>
+  </form>
+ 
+</div>

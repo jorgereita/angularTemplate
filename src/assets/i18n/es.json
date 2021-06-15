@@ -1,0 +1,67 @@
+{
+    "COMMONS":{
+        "OK":"Confirmar",
+        "ALERT": "Atención",
+        "ERROR_SERVICE": "Error en la conexión con servidor.",
+        "SERVICE_OK": "OK",
+        "CANCEL": "Cancelar",
+        "FINISH": "Finalizar",
+        "ADVISOR": "Asesor",
+        "DATE":"Fecha"
+    },
+    "LOGIN":{
+        "ELUVE_TEXT":"ELUVE DEMO",
+        "LOGIN_TITLE":"Iniciar sesión",
+        "LOGIN_USER":"Usuario",
+        "LOGIN_PASS":"Contraseña",
+        "LOGIN_BUTTON":"Ingresar"
+    },
+    "MAIN":{
+        "GREETING": "Hola, "
+    },
+    "FORMS":{
+        "COMMONS":{
+            "ID":"Id Solicitud",
+            "TYPE_ID": "Documento",
+            "TYPE_DATE":"Fecha",
+            "VALUE": "Valor",
+            "SEARCH": "Buscar",
+            "RESET": "Limpiar",
+            "NO_MATCH": "Sin coincidencias."
+        },
+        "INITIAL_FORM":{
+            "TITLE":"Captura Inicial",
+            "DESCRIPTION": "Ingrese los datos del usuario a consultar",
+            "ID_TYPE": "Tipo de documento",
+            "ID_NUMBER": "N° de documento",
+            "BTN_LABEL": "Continuar"
+        },
+        "BASIC_DATA_FORM":{
+            "TITLE":"Datos basicos",
+            "DESCRIPTION": "Ingrese los datos basicos del usuario a consultar",
+            "NAME": "Primer nombre",
+            "SECOND_NAME": "Segundo nombre",
+            "SURENAME": "Primer Apellido",
+            "SECOND_SURE_NAME": "Segundo Apellido",
+            "BIRTHDATE": "Fecha de nacimiento",
+            "BTN_LABEL": "Continuar"
+        },
+        "FINANTIAL_DATA_FORM":{
+            "TITLE":"Datos financieros",
+            "DESCRIPTION": "Ingrese los datos financieros",
+            "INCOME": "Ingresos",
+            "OPTION": "Opción",
+            "BTN_LABEL": "Continuar"
+        },
+        "ADITIONAL_DATA_FORM":{
+            "TITLE":"Referencias",
+            "DESCRIPTION": "Ingrese las referencias del usuario",
+            "REF_ID_1": "Documento de la referencia",
+            "TYPE_ID_1":"Tipo de documento",
+            "REF_NAME_1": "Nombre de la referencia",
+            "BTN_LABEL": "Continuar"
+        }
+    }
+    
+
+}
